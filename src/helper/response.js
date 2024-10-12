@@ -5,8 +5,8 @@ class ResponseSender {
     this.resStream = resStream;
   }
 
-  sendMsg(response, code = StatusCodes.OK) {
-    this.resStream.status(code).json({ response });
+  sendMsg(result, code = StatusCodes.OK) {
+    this.resStream.status(code).json({ result });
   }
 
   sendDone(code = StatusCodes.OK) {
