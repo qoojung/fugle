@@ -4,6 +4,10 @@ module.exports = {
     port: 6379,
     password: '',
   },
+  ohlc: {
+    keepMin: 15,
+    reportIntervalSec: 60 * 1000,
+  },
   rateControl: {
     ipAddr: {
       count: 10,
