@@ -4,10 +4,11 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start": "node app.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Henry Chang <humiya.chang@hotmail.com>",
+  "license": "MIT",
   "description": "",
   "devDependencies": {
     "eslint": "^8.57.1",

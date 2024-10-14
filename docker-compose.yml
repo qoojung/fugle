@@ -1,0 +1,12 @@
+# syntax=docker/dockerfile:1
+services:
+  redis:
+    image: 'redis:7.4.1'
+    ports:
+       - '6379:6379'
+  nodejs-app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    command: npm run start
