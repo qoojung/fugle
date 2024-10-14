@@ -1,9 +1,9 @@
-# Node.js Application with Docker
-
-This project sets up a Node.js application using Docker for consistent development environments.
+# Fugle Pre-test
+- This project is for pre-test of Fugle.
+- This project sets up a Node.js application using Docker and Docker compose to simplify set up flow.
 
 ## Prerequisites
-- Ubuntu 20.04 LTS
+- Ubuntu 20.04 LTS (x86_64)
 - Docker 27.3.1
 - Docker Compose 27.3.1
 
