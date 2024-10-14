@@ -5,7 +5,9 @@ const config = require('../config/config');
 const ApiResponse = require('./response');
 const asyncHandler = require('./async');
 
-function calToken({ controlObj, curTimeSecond, rateCount, rateInterval }) {
+function calToken({
+  controlObj, curTimeSecond, rateCount, rateInterval,
+}) {
   const lastCount = _.has(controlObj, 'count') ? parseInt(controlObj.count, 10) : rateCount;
   const lastTimeSecond = _.has(controlObj, 'last_time_sec') ? parseInt(controlObj.last_time_sec, 10) : curTimeSecond;
   const curCount = Math.min(
@@ -15,7 +17,9 @@ function calToken({ controlObj, curTimeSecond, rateCount, rateInterval }) {
   return curCount;
 }
 
-async function checkRate({ userId, ip, curTimeSecond, ipRateConfig, userRateConfig }) {
+async function checkRate({
+  userId, ip, curTimeSecond, ipRateConfig, userRateConfig,
+}) {
   const ipKey = `RATE_LIMIT_IP:${Buffer.from(ip).toString('base64')}`;
   const userKey = `RATE_LIMIT_USER:${userId}`;
   const ipRateInfo = await redisClient.get(ipKey);

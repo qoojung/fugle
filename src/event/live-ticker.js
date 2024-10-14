@@ -1,7 +1,7 @@
 const events = require('node:events');
+const { DateTime } = require('luxon');
 const config = require('../config/config');
 const logger = require('../helper/logger');
-const { DateTime } = require('luxon');
 const { client: redisClient } = require('../helper/redis-client');
 
 const KEEP_MIN = config.ohlc.keepMin;

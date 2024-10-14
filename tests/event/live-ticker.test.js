@@ -1,4 +1,5 @@
 const TickerTopic = require('../../src/event/live-ticker');
+
 jest.mock('../../src/helper/redis-client');
 describe('user ticker', () => {
   it('basic operation', () => {
