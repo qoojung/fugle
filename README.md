@@ -57,5 +57,10 @@ To stop the application and remove the containers, use:
 docker compose down
 ```
 
+## Future Work
+- Create test file for all components.
+- Move rate limit to Lua to prevent race condition.
+
+
 ## License
 MIT
