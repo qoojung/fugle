@@ -61,13 +61,12 @@ class LiveTicker extends events.EventEmitter {
     logger.info('Reporting OHLC');
     // report the last minute's ohlc
     const date = DateTime.utc().startOf('minute').minus({ minute: 1 });
-    const timestampTag = date.toFormat('yyyy-MM-dd-hh-mm');
+    const timestampTag = date.toFormat('yyyy-MM-dd-HH-mm');
     this.eventNames().forEach(async (currencyPair) => {
       const key = `${OHLC_KEY}${currencyPair}:${timestampTag}`;
       const ohlc = await redisClient.get(key);
       if (ohlc) {
-        const ohlcObj = Object.assign(JSON.parse(ohlc), { date: date.toFormat('yyyy-MM-dd HH:mm:ss') });
-        date.toFormat('yyyy-MM-dd-hh-mm');
+        const ohlcObj = Object.assign(JSON.parse(ohlc), { date: date.toLocal().toFormat('yyyy-MM-dd HH:mm:ss') });
         const msg = {
           channel: currencyPair,
           data: ohlcObj,
