@@ -14,7 +14,7 @@ class LiveTicker extends events.EventEmitter {
     super();
     this.topics = {};
     this.source = source;
-    this.reportOHLC = setInterval(this.#reportOHLC.bind(this), REPORT_INTERVAL_SEC);
+    this.reportOHLCTask = setInterval(this.#reportOHLC.bind(this), REPORT_INTERVAL_SEC);
     source.onMessage(async (message) => {
       try {
         const msg = JSON.parse(message.toString('utf8'));
@@ -66,7 +66,7 @@ class LiveTicker extends events.EventEmitter {
       const key = `${OHLC_KEY}${currencyPair}:${timestampTag}`;
       const ohlc = await redisClient.get(key);
       if (ohlc) {
-        const ohlcObj = Object.assign(JSON.parse(ohlc), { date: date.toFormat('yyyy-mm-dd HH:mm:ss') });
+        const ohlcObj = Object.assign(JSON.parse(ohlc), { date: date.toFormat('yyyy-MM-dd HH:mm:ss') });
         date.toFormat('yyyy-MM-dd-hh-mm');
         const msg = {
           channel: currencyPair,
@@ -97,7 +97,7 @@ class LiveTicker extends events.EventEmitter {
   }
 
   close() {
-    clearInterval(this.reportOHLC);
+    clearInterval(this.reportOHLCTask);
   }
 }
 module.exports = LiveTicker;
