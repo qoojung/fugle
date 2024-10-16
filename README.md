@@ -77,7 +77,7 @@ docker compose down
 {"action": "unsubscribe", "channel": "<currency pair>"}
 ```
 - Body:
-  - action: (str) must be `subscribe`
+  - action: (str) must be `unsubscribe`
   - channel: (str) currency pair e.g. btcusd [refer to Bitstamp](https://www.bitstamp.net/websocket/v2/)
 - Response:
   - success response: `{"msg":"success","code":0}`
